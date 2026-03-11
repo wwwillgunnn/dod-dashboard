@@ -1,1 +1,158 @@
-<p>finances works!</p>
+<main class="flex-1 p-6">
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-5 gap-4 mb-6">
+      <div class="bg-[#171717] p-6 rounded-lg h-40">
+        <h3 class="text-sm text-gray-400">Total Budget FY2026</h3>
+        <p class="text-2xl font-bold">$62.7B</p>
+        <p class="text-xs text-gray-500 mt-1">Big Moolah — $$$</p>
+      </div>
+  
+      <div class="bg-[#171717] p-6 rounded-lg h-40">
+        <h3 class="text-sm text-gray-400">Program Overruns</h3>
+        <p class="text-2xl font-bold text-orange-500">+$3.4B</p>
+        <p class="text-xs text-gray-500 mt-1">Bro what are you doing?!</p>
+      </div>
+  
+      <div class="bg-[#171717] p-6 rounded-lg h-40">
+        <h3 class="text-sm text-gray-400">Budget Utilization</h3>
+        <p class="text-2xl font-bold">75%</p>
+        <p class="text-xs text-gray-500 mt-1">Not bad</p>
+      </div>
+  
+      <div class="bg-[#171717] p-6 rounded-lg h-40">
+        <h3 class="text-sm text-gray-400">Monthly Spend Rate</h3>
+        <p class="text-2xl font-bold text-green-500">$2.5B</p>
+        <p class="text-xs text-gray-500 mt-1">
+          Green means go
+        </p>
+      </div>
+  
+      <div class="bg-[#171717] p-6 rounded-lg h-40">
+        <h3 class="text-sm text-gray-400">Procurement Budget</h3>
+        <p class="text-2xl font-bold">$11.5B</p>
+        <p class="text-xs text-gray-500 mt-1">
+          I want it all!!
+        </p>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-[#171717] p-4 rounded-lg h-72 md:col-span-2">
+        <h3 class="font-semibold mb-2">Defense Spending (FY2020–2026)</h3>
+
+        <div class="h-56">
+          <canvas
+            baseChart
+            [data]="defenseSpendingData"
+            [options]="defenseSpendingOptions"
+            [type]="'line'"
+          ></canvas>
+        </div>
+      </div>
+
+      <div class="bg-[#171717] p-4 rounded-lg h-72">
+        <h3 class="font-semibold mb-2">Defense Budget Allocation</h3>
+
+        <div class="h-56">
+          <canvas
+            baseChart
+            [data]="defenseAllocationData"
+            [options]="defenseAllocationOptions"
+            [type]="'pie'"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="font-semibold mb-4">Contract Tracker</h3>
+      <div class="overflow-x-auto max-h-64 overflow-y-auto">
+        <table class="min-w-full text-left text-sm text-gray-300">
+          <thead class="border-b border-gray-700 text-gray-400">
+            <tr>
+              <th class="py-2 pr-4">ID</th>
+              <th class="py-2 pr-4">Name</th>
+              <th class="py-2 pr-4">Total Amount</th>
+              <th class="py-2 pr-4">Vendor</th>
+              <th class="py-2 pr-4">Contract Type</th>
+              <th class="py-2 pr-4">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800">
+            <tr>
+              <td class="py-2 pr-4">CT-001</td>
+              <td class="py-2 pr-4">Naval Frigate Radar</td>
+              <td class="py-2 pr-4">$420.5M</td>
+              <td class="py-2 pr-4">BAE Systems</td>
+              <td class="py-2 pr-4">Procurement</td>
+              <td class="py-2 pr-4 text-green-400">Active</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-002</td>
+              <td class="py-2 pr-4">Cyber Defense Platform</td>
+              <td class="py-2 pr-4">$285.0M</td>
+              <td class="py-2 pr-4">Raytheon</td>
+              <td class="py-2 pr-4">R&amp;D</td>
+              <td class="py-2 pr-4 text-yellow-400">Pending</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-003</td>
+              <td class="py-2 pr-4">Satellite Launch Services</td>
+              <td class="py-2 pr-4">$610.2M</td>
+              <td class="py-2 pr-4">SpaceX</td>
+              <td class="py-2 pr-4">Operations</td>
+              <td class="py-2 pr-4 text-blue-400">Planned</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-004</td>
+              <td class="py-2 pr-4">Armored Vehicle Upgrade</td>
+              <td class="py-2 pr-4">$350.0M</td>
+              <td class="py-2 pr-4">General Dynamics</td>
+              <td class="py-2 pr-4">Procurement</td>
+              <td class="py-2 pr-4 text-red-400">Delayed</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-005</td>
+              <td class="py-2 pr-4">Advanced Drone Fleet</td>
+              <td class="py-2 pr-4">$275.3M</td>
+              <td class="py-2 pr-4">Northrop Grumman</td>
+              <td class="py-2 pr-4">Procurement</td>
+              <td class="py-2 pr-4 text-green-400">Active</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-006</td>
+              <td class="py-2 pr-4">Secure Comms Network</td>
+              <td class="py-2 pr-4">$198.7M</td>
+              <td class="py-2 pr-4">Lockheed Martin</td>
+              <td class="py-2 pr-4">R&amp;D</td>
+              <td class="py-2 pr-4 text-yellow-400">Pending</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-007</td>
+              <td class="py-2 pr-4">Missile Defense Upgrade</td>
+              <td class="py-2 pr-4">$732.4M</td>
+              <td class="py-2 pr-4">Raytheon</td>
+              <td class="py-2 pr-4">Procurement</td>
+              <td class="py-2 pr-4 text-green-400">Active</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-008</td>
+              <td class="py-2 pr-4">Logistics Modernization</td>
+              <td class="py-2 pr-4">$156.9M</td>
+              <td class="py-2 pr-4">Accenture Federal</td>
+              <td class="py-2 pr-4">Operations</td>
+              <td class="py-2 pr-4 text-blue-400">Planned</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">CT-009</td>
+              <td class="py-2 pr-4">AI Threat Analytics</td>
+              <td class="py-2 pr-4">$89.4M</td>
+              <td class="py-2 pr-4">Palantir</td>
+              <td class="py-2 pr-4">R&amp;D</td>
+              <td class="py-2 pr-4 text-red-400">Delayed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>

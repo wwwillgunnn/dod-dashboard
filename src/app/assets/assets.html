@@ -1,1 +1,523 @@
-<p>assets works!</p>
+<main class="flex-1 min-h-screen bg-black text-white">
+  <section class="h-[75vh] flex overflow-hidden">
+    <!-- Ground -->
+    <button
+      class="group relative flex-1 transition-[flex-grow] duration-500 ease-out hover:flex-[1.6] focus-visible:flex-[1.6] outline-none"
+      type="button"
+      (click)="openGroundDialog()"
+    >
+      <div
+        class="absolute inset-0 bg-center bg-cover opacity-60 group-hover:opacity-90 group-focus-visible:opacity-90 transition-opacity duration-500"
+        style="background-image: url('https://images8.alphacoders.com/748/thumb-1920-748098.jpg');"
+      ></div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+
+      <div class="relative z-10 flex h-full items-center justify-center">
+        <span class="asset-label">GROUND</span>
+      </div>
+    </button>
+
+    <!-- Air -->
+    <button
+      class="group relative flex-1 border-l border-white/10 transition-[flex-grow] duration-500 ease-out hover:flex-[1.6] focus-visible:flex-[1.6] outline-none"
+      type="button"
+      (click)="openAirDialog()"
+    >
+      <div
+        class="absolute inset-0 bg-center bg-cover opacity-60 group-hover:opacity-90 group-focus-visible:opacity-90 transition-opacity duration-500"
+        style="background-image: url('https://images.pexels.com/photos/76970/fighter-jet-fighter-aircraft-aircraft-f-22-raptor-76970.jpeg?cs=srgb&dl=pexels-pixabay-76970.jpg&fm=jpg');"
+      ></div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+
+      <div class="relative z-10 flex h-full items-center justify-center">
+        <span class="asset-label">AIR</span>
+      </div>
+    </button>
+
+    <!-- Naval -->
+    <button
+      class="group relative flex-1 border-l border-white/10 transition-[flex-grow] duration-500 ease-out hover:flex-[1.6] focus-visible:flex-[1.6] outline-none"
+      type="button"
+      (click)="openNavalDialog()"
+    >
+      <div
+        class="absolute inset-0 bg-center bg-cover opacity-60 group-hover:opacity-90 group-focus-visible:opacity-90 transition-opacity duration-500"
+        style="background-image: url('https://images6.alphacoders.com/101/1010197.jpg');"
+      ></div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+
+      <div class="relative z-10 flex h-full items-center justify-center">
+        <span class="asset-label">NAVAL</span>
+      </div>
+    </button>
+
+    <!-- Spatial -->
+    <button
+      class="group relative flex-1 border-l border-white/10 transition-[flex-grow] duration-500 ease-out hover:flex-[1.6] focus-visible:flex-[1.6] outline-none"
+      type="button"
+      (click)="openSpatialDialog()"
+    >
+      <div
+        class="absolute inset-0 bg-center bg-cover opacity-60 group-hover:opacity-90 group-focus-visible:opacity-90 transition-opacity duration-500"
+        style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/013/812/314/original/planet-earth-reflected-in-the-lens-of-an-orbiting-spy-satellite-video.jpg');"
+      ></div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+
+      <div class="relative z-10 flex h-full items-center justify-center">
+        <span class="asset-label">SPATIAL</span>
+      </div>
+    </button>
+  </section>
+
+  <!-- Ground dialog -->
+  <div
+    *ngIf="showGroundDialog"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+    (click)="closeGroundDialog()"
+  >
+    <div
+      class="bg-[#171717] text-white px-8 py-6 rounded-lg shadow-xl w-full max-w-3xl"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-start justify-between mb-4">
+        <h2 class="text-lg font-semibold">Ground Assets Overview</h2>
+        <button
+          type="button"
+          class="text-gray-400 hover:text-green-400"
+          (click)="closeGroundDialog()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Stat cards row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Total Ground Assets</h3>
+          <p class="text-2xl font-bold">1,240</p>
+          <p class="text-xs text-gray-500 mt-1">Active ground platforms worldwide</p>
+        </div>
+
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Readiness</h3>
+          <p class="text-2xl font-bold text-green-400">92%</p>
+          <p class="text-xs text-gray-500 mt-1">Mission‑ready within 24 hours</p>
+        </div>
+      </div>
+
+      <!-- Ground inventory table -->
+      <div class="bg-[#111111] rounded-lg border border-white/5 mb-6">
+        <div class="px-4 py-3 border-b border-white/5">
+          <h3 class="text-sm font-semibold text-gray-200">Ground Inventory</h3>
+          <p class="text-xs text-gray-500 mt-1">Key tracked ground platforms and status</p>
+        </div>
+        <div class="px-4 py-3 overflow-x-auto max-h-60 overflow-y-auto">
+          <table class="min-w-full text-left text-xs text-gray-300">
+            <thead class="border-b border-gray-700 text-gray-400">
+              <tr>
+                <th class="py-2 pr-4">ID</th>
+                <th class="py-2 pr-4">Platform</th>
+                <th class="py-2 pr-4">Role</th>
+                <th class="py-2 pr-4">In Service</th>
+                <th class="py-2 pr-4">Location</th>
+                <th class="py-2 pr-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              <tr>
+                <td class="py-2 pr-4">GR-001</td>
+                <td class="py-2 pr-4">M1A3 Abrams</td>
+                <td class="py-2 pr-4">Main Battle Tank</td>
+                <td class="py-2 pr-4">84</td>
+                <td class="py-2 pr-4">EUCOM</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">GR-014</td>
+                <td class="py-2 pr-4">JLTV Block II</td>
+                <td class="py-2 pr-4">Tactical Vehicle</td>
+                <td class="py-2 pr-4">162</td>
+                <td class="py-2 pr-4">CENTCOM</td>
+                <td class="py-2 pr-4 text-yellow-400">Rotating</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">GR-027</td>
+                <td class="py-2 pr-4">M777A2</td>
+                <td class="py-2 pr-4">Howitzer</td>
+                <td class="py-2 pr-4">36</td>
+                <td class="py-2 pr-4">INDOPACOM</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">GR-039</td>
+                <td class="py-2 pr-4">Stryker ICV</td>
+                <td class="py-2 pr-4">Infantry Carrier</td>
+                <td class="py-2 pr-4">58</td>
+                <td class="py-2 pr-4">NORTHCOM</td>
+                <td class="py-2 pr-4 text-blue-400">Reserve</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">GR-051</td>
+                <td class="py-2 pr-4">MRAP Cougar</td>
+                <td class="py-2 pr-4">Mine Resistant</td>
+                <td class="py-2 pr-4">41</td>
+                <td class="py-2 pr-4">AFRICOM</td>
+                <td class="py-2 pr-4 text-red-400">Maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-md bg-green-600 hover:bg-green-500 text-sm font-medium"
+          (click)="closeGroundDialog()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Air dialog -->
+  <div
+    *ngIf="showAirDialog"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+    (click)="closeAirDialog()"
+  >
+    <div
+      class="bg-[#171717] text-white px-8 py-6 rounded-lg shadow-xl w-full max-w-3xl"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-start justify-between mb-4">
+        <h2 class="text-lg font-semibold">Air Assets Overview</h2>
+        <button
+          type="button"
+          class="text-gray-400 hover:text-green-400"
+          (click)="closeAirDialog()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Stat cards row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Total Airframes</h3>
+          <p class="text-2xl font-bold">480</p>
+          <p class="text-xs text-gray-500 mt-1">Fighters, bombers, and support aircraft</p>
+        </div>
+
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Sortie Readiness</h3>
+          <p class="text-2xl font-bold text-green-400">88%</p>
+          <p class="text-xs text-gray-500 mt-1">Able to launch within 6 hours</p>
+        </div>
+      </div>
+
+      <!-- Air inventory table -->
+      <div class="bg-[#111111] rounded-lg border border-white/5 mb-6">
+        <div class="px-4 py-3 border-b border-white/5">
+          <h3 class="text-sm font-semibold text-gray-200">Air Inventory</h3>
+          <p class="text-xs text-gray-500 mt-1">Representative air platforms and status</p>
+        </div>
+        <div class="px-4 py-3 overflow-x-auto max-h-60 overflow-y-auto">
+          <table class="min-w-full text-left text-xs text-gray-300">
+            <thead class="border-b border-gray-700 text-gray-400">
+              <tr>
+                <th class="py-2 pr-4">ID</th>
+                <th class="py-2 pr-4">Platform</th>
+                <th class="py-2 pr-4">Role</th>
+                <th class="py-2 pr-4">In Service</th>
+                <th class="py-2 pr-4">Wing</th>
+                <th class="py-2 pr-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              <tr>
+                <td class="py-2 pr-4">AR-101</td>
+                <td class="py-2 pr-4">F‑35A Lightning II</td>
+                <td class="py-2 pr-4">Multirole Fighter</td>
+                <td class="py-2 pr-4">32</td>
+                <td class="py-2 pr-4">1st Tactical</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">AR-118</td>
+                <td class="py-2 pr-4">KC‑46 Pegasus</td>
+                <td class="py-2 pr-4">Aerial Refueler</td>
+                <td class="py-2 pr-4">12</td>
+                <td class="py-2 pr-4">Mobility</td>
+                <td class="py-2 pr-4 text-yellow-400">Rotating</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">AR-133</td>
+                <td class="py-2 pr-4">E‑7 Wedgetail</td>
+                <td class="py-2 pr-4">Airborne C2</td>
+                <td class="py-2 pr-4">6</td>
+                <td class="py-2 pr-4">ISR</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">AR-149</td>
+                <td class="py-2 pr-4">MQ‑9B SkyGuardian</td>
+                <td class="py-2 pr-4">UAS</td>
+                <td class="py-2 pr-4">18</td>
+                <td class="py-2 pr-4">Remote Ops</td>
+                <td class="py-2 pr-4 text-blue-400">Reserve</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">AR-162</td>
+                <td class="py-2 pr-4">C‑130J Super Hercules</td>
+                <td class="py-2 pr-4">Airlift</td>
+                <td class="py-2 pr-4">24</td>
+                <td class="py-2 pr-4">Air Mobility</td>
+                <td class="py-2 pr-4 text-red-400">Maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-md bg-green-600 hover:bg-green-500 text-sm font-medium"
+          (click)="closeAirDialog()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Naval dialog -->
+  <div
+    *ngIf="showNavalDialog"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+    (click)="closeNavalDialog()"
+  >
+    <div
+      class="bg-[#171717] text-white px-8 py-6 rounded-lg shadow-xl w-full max-w-3xl"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-start justify-between mb-4">
+        <h2 class="text-lg font-semibold">Naval Assets Overview</h2>
+        <button
+          type="button"
+          class="text-gray-400 hover:text-green-400"
+          (click)="closeNavalDialog()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Stat cards row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Commissioned Vessels</h3>
+          <p class="text-2xl font-bold">96</p>
+          <p class="text-xs text-gray-500 mt-1">Blue‑water and littoral combined</p>
+        </div>
+
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">At Sea</h3>
+          <p class="text-2xl font-bold text-green-400">63%</p>
+          <p class="text-xs text-gray-500 mt-1">Currently on deployment or patrol</p>
+        </div>
+      </div>
+
+      <!-- Naval inventory table -->
+      <div class="bg-[#111111] rounded-lg border border-white/5 mb-6">
+        <div class="px-4 py-3 border-b border-white/5">
+          <h3 class="text-sm font-semibold text-gray-200">Naval Inventory</h3>
+          <p class="text-xs text-gray-500 mt-1">Representative surface and subsurface assets</p>
+        </div>
+        <div class="px-4 py-3 overflow-x-auto max-h-60 overflow-y-auto">
+          <table class="min-w-full text-left text-xs text-gray-300">
+            <thead class="border-b border-gray-700 text-gray-400">
+              <tr>
+                <th class="py-2 pr-4">ID</th>
+                <th class="py-2 pr-4">Platform</th>
+                <th class="py-2 pr-4">Class</th>
+                <th class="py-2 pr-4">Hull Count</th>
+                <th class="py-2 pr-4">Fleet</th>
+                <th class="py-2 pr-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              <tr>
+                <td class="py-2 pr-4">NV-201</td>
+                <td class="py-2 pr-4">Arleigh Burke</td>
+                <td class="py-2 pr-4">Destroyer</td>
+                <td class="py-2 pr-4">22</td>
+                <td class="py-2 pr-4">Atlantic</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">NV-219</td>
+                <td class="py-2 pr-4">Virginia</td>
+                <td class="py-2 pr-4">Attack Submarine</td>
+                <td class="py-2 pr-4">9</td>
+                <td class="py-2 pr-4">Pacific</td>
+                <td class="py-2 pr-4 text-yellow-400">Rotating</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">NV-233</td>
+                <td class="py-2 pr-4">Freedom</td>
+                <td class="py-2 pr-4">Littoral Combat</td>
+                <td class="py-2 pr-4">6</td>
+                <td class="py-2 pr-4">Gulf</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">NV-247</td>
+                <td class="py-2 pr-4">Wasp</td>
+                <td class="py-2 pr-4">Amphibious Assault</td>
+                <td class="py-2 pr-4">4</td>
+                <td class="py-2 pr-4">Pacific</td>
+                <td class="py-2 pr-4 text-blue-400">Reserve</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">NV-259</td>
+                <td class="py-2 pr-4">Ticonderoga</td>
+                <td class="py-2 pr-4">Cruiser</td>
+                <td class="py-2 pr-4">5</td>
+                <td class="py-2 pr-4">Atlantic</td>
+                <td class="py-2 pr-4 text-red-400">Maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-md bg-green-600 hover:bg-green-500 text-sm font-medium"
+          (click)="closeNavalDialog()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spatial dialog -->
+  <div
+    *ngIf="showSpatialDialog"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+    (click)="closeSpatialDialog()"
+  >
+    <div
+      class="bg-[#171717] text-white px-8 py-6 rounded-lg shadow-xl w-full max-w-3xl"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-start justify-between mb-4">
+        <h2 class="text-lg font-semibold">Spatial Assets Overview</h2>
+        <button
+          type="button"
+          class="text-gray-400 hover:text-green-400"
+          (click)="closeSpatialDialog()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Stat cards row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">On‑Orbit Platforms</h3>
+          <p class="text-2xl font-bold">67</p>
+          <p class="text-xs text-gray-500 mt-1">ISR, comms, and navigation combined</p>
+        </div>
+
+        <div class="bg-[#111111] p-4 rounded-lg">
+          <h3 class="text-sm text-gray-400">Coverage</h3>
+          <p class="text-2xl font-bold text-green-400">98%</p>
+          <p class="text-xs text-gray-500 mt-1">Global surface coverage within 10 min</p>
+        </div>
+      </div>
+
+      <!-- Spatial inventory table -->
+      <div class="bg-[#111111] rounded-lg border border-white/5 mb-6">
+        <div class="px-4 py-3 border-b border-white/5">
+          <h3 class="text-sm font-semibold text-gray-200">Spatial Inventory</h3>
+          <p class="text-xs text-gray-500 mt-1">Representative orbital and ground segment assets</p>
+        </div>
+        <div class="px-4 py-3 overflow-x-auto max-h-60 overflow-y-auto">
+          <table class="min-w-full text-left text-xs text-gray-300">
+            <thead class="border-b border-gray-700 text-gray-400">
+              <tr>
+                <th class="py-2 pr-4">ID</th>
+                <th class="py-2 pr-4">Platform</th>
+                <th class="py-2 pr-4">Orbit</th>
+                <th class="py-2 pr-4">Role</th>
+                <th class="py-2 pr-4">Nodes</th>
+                <th class="py-2 pr-4">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              <tr>
+                <td class="py-2 pr-4">SP-301</td>
+                <td class="py-2 pr-4">Hawkeye‑X</td>
+                <td class="py-2 pr-4">LEO</td>
+                <td class="py-2 pr-4">ISR</td>
+                <td class="py-2 pr-4">12</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">SP-316</td>
+                <td class="py-2 pr-4">AuroraNet</td>
+                <td class="py-2 pr-4">MEO</td>
+                <td class="py-2 pr-4">Comms</td>
+                <td class="py-2 pr-4">8</td>
+                <td class="py-2 pr-4 text-yellow-400">Re‑tasking</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">SP-329</td>
+                <td class="py-2 pr-4">GeoSentinel</td>
+                <td class="py-2 pr-4">GEO</td>
+                <td class="py-2 pr-4">Missile Warning</td>
+                <td class="py-2 pr-4">5</td>
+                <td class="py-2 pr-4 text-green-400">Active</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">SP-347</td>
+                <td class="py-2 pr-4">PolarWatch</td>
+                <td class="py-2 pr-4">HEO</td>
+                <td class="py-2 pr-4">Arctic Coverage</td>
+                <td class="py-2 pr-4">3</td>
+                <td class="py-2 pr-4 text-blue-400">Standby</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-4">SP-359</td>
+                <td class="py-2 pr-4">GroundLink</td>
+                <td class="py-2 pr-4">Ground</td>
+                <td class="py-2 pr-4">Control Station</td>
+                <td class="py-2 pr-4">7</td>
+                <td class="py-2 pr-4 text-red-400">Upgrade</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="px-4 py-2 rounded-md bg-green-600 hover:bg-green-500 text-sm font-medium"
+          (click)="closeSpatialDialog()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

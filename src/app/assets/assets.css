@@ -1,0 +1,16 @@
+.asset-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.25em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+button.group:hover .asset-label,
+button.group:focus-visible .asset-label {
+  transform: scale(1.1);
+  color: #ffffff;
+}
