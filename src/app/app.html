@@ -7,7 +7,7 @@
     </div>
 
     <nav class="flex flex-col gap-4">
-      <a class="flex items-center gap-2 hover:text-green-400" href="#">
+      <a class="flex items-center gap-2 hover:text-green-400" routerLink="/dashboard">
         <span class="material-icons">dashboard</span> Dashboard
       </a>
       <a class="flex items-center gap-2 hover:text-green-400" routerLink="/deployments">
@@ -35,89 +35,8 @@
     </div>
 
     <!-- Main Content -->
-    <main class="flex-1 p-6">
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-4 gap-4 mb-6">
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Deployed Units</h3>
-          <p class="text-2xl font-bold">200,000</p>
-          <p class="text-xs text-gray-500 mt-1">Trending Downwards — Oh no!</p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Active Operations</h3>
-          <p class="text-2xl font-bold">22,654</p>
-          <p class="text-xs text-gray-500 mt-1">Trending Downwards (+3 started in the last hour)</p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Satellite Status</h3>
-          <p class="text-2xl font-bold">98%</p>
-          <p class="text-xs text-gray-500 mt-1">
-            Looking goooood — Take action or get cooked twinski
-          </p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Operational Assets</h3>
-          <p class="text-2xl font-bold">7,265</p>
-          <p class="text-xs text-gray-500 mt-1">
-            Trending Upwards — Includes ground, air, and water machines
-          </p>
-        </div>
-      </div>
-
-      <!-- Charts & Tables -->
-      <div class="grid grid-cols-3 gap-4 mb-6">
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Threat Incidents</h3>
-
-          <div class="h-32">
-            <canvas
-              baseChart
-              [data]="barChartData"
-              [options]="barChartOptions"
-              [type]="'bar'"
-            ></canvas>
-          </div>
-
-          <p class="text-xs mt-2 text-gray-400">
-            Total threat levels this month: Trending down by 5.2%
-          </p>
-        </div>
-
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Active Operations</h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li>Operation BLEH — Region: Pacific</li>
-            <li>Operation BLEH — Region: Pacific</li>
-            <li>Operation BLEH — Region: Pacific</li>
-          </ul>
-        </div>
-
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Intelligence Briefings</h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li>Pacific Region — 12 min ago — Suspicious naval activity detected (High)</li>
-            <li>Cyber Sector — 27 min ago — Increased intrusion (High)</li>
-            <li>East Border — 52 min ago — Unidentified aircraft (High)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Threat Activity Graph -->
-      <div class="bg-[#171717] p-4 rounded-lg">
-        <h3 class="font-semibold mb-2">Threat Activity (last 24hrs)</h3>
-
-        <div class="h-40">
-          <canvas
-            baseChart
-            [data]="threatActivityData"
-            [options]="threatActivityOptions"
-            [type]="'line'"
-          ></canvas>
-        </div>
-      </div>
-    </main>
+    <router-outlet></router-outlet>
   </div>
-
   <!-- Right Sidebar -->
   <aside
     class="w-50 bg-[#171717] border-l-2 border-[#2E2F2F] p-4 flex flex-col gap-4 overflow-y-auto"

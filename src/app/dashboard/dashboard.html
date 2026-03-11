@@ -1,97 +1,74 @@
-<div class="flex h-screen bg-[#0A0A0A] text-white">
-  <!-- Main Area -->
-  <div class="flex-1 flex flex-col overflow-y-auto">
-    <!-- Threat Header (full width, outside main content) -->
-    <div
-      class="w-full bg-[#171717] border-b-2 border-[#2E2F2F] text-white py-2 flex flex-col items-center gap-2"
-    >
-      <h2 class="text-2xl font-bold text-center">
-        THREAT LEVEL: <span class="text-red-500">ELEVATED</span>
-      </h2>
-      <p class="text-sm text-gray-400 text-center">Last update: 13:43 UTC | Active Alerts: 12</p>
+<main class="flex-1 p-6">
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-4 gap-4 mb-6">
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="text-sm text-gray-400">Deployed Units</h3>
+      <p class="text-2xl font-bold">200,000</p>
+      <p class="text-xs text-gray-500 mt-1">Trending Downwards — Oh no!</p>
+    </div>
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="text-sm text-gray-400">Active Operations</h3>
+      <p class="text-2xl font-bold">22,654</p>
+      <p class="text-xs text-gray-500 mt-1">Trending Downwards (+3 started in the last hour)</p>
+    </div>
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="text-sm text-gray-400">Satellite Status</h3>
+      <p class="text-2xl font-bold">98%</p>
+      <p class="text-xs text-gray-500 mt-1">Looking goooood — Take action or get cooked twinski</p>
+    </div>
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="text-sm text-gray-400">Operational Assets</h3>
+      <p class="text-2xl font-bold">7,265</p>
+      <p class="text-xs text-gray-500 mt-1">
+        Trending Upwards — Includes ground, air, and water machines
+      </p>
+    </div>
+  </div>
+
+  <!-- Charts & Tables -->
+  <div class="grid grid-cols-3 gap-4 mb-6">
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="font-semibold mb-2">Threat Incidents</h3>
+
+      <div class="h-32">
+        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"></canvas>
+      </div>
+
+      <p class="text-xs mt-2 text-gray-400">
+        Total threat levels this month: Trending down by 5.2%
+      </p>
     </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6">
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-4 gap-4 mb-6">
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Deployed Units</h3>
-          <p class="text-2xl font-bold">200,000</p>
-          <p class="text-xs text-gray-500 mt-1">Trending Downwards — Oh no!</p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Active Operations</h3>
-          <p class="text-2xl font-bold">22,654</p>
-          <p class="text-xs text-gray-500 mt-1">Trending Downwards (+3 started in the last hour)</p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Satellite Status</h3>
-          <p class="text-2xl font-bold">98%</p>
-          <p class="text-xs text-gray-500 mt-1">
-            Looking goooood — Take action or get cooked twinski
-          </p>
-        </div>
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="text-sm text-gray-400">Operational Assets</h3>
-          <p class="text-2xl font-bold">7,265</p>
-          <p class="text-xs text-gray-500 mt-1">
-            Trending Upwards — Includes ground, air, and water machines
-          </p>
-        </div>
-      </div>
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="font-semibold mb-2">Active Operations</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>Operation BLEH — Region: Pacific</li>
+        <li>Operation BLEH — Region: Pacific</li>
+        <li>Operation BLEH — Region: Pacific</li>
+      </ul>
+    </div>
 
-      <!-- Charts & Tables -->
-      <div class="grid grid-cols-3 gap-4 mb-6">
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Threat Incidents</h3>
-
-          <div class="h-32">
-            <canvas
-              baseChart
-              [data]="barChartData"
-              [options]="barChartOptions"
-              [type]="'bar'"
-            ></canvas>
-          </div>
-
-          <p class="text-xs mt-2 text-gray-400">
-            Total threat levels this month: Trending down by 5.2%
-          </p>
-        </div>
-
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Active Operations</h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li>Operation BLEH — Region: Pacific</li>
-            <li>Operation BLEH — Region: Pacific</li>
-            <li>Operation BLEH — Region: Pacific</li>
-          </ul>
-        </div>
-
-        <div class="bg-[#171717] p-4 rounded-lg">
-          <h3 class="font-semibold mb-2">Intelligence Briefings</h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li>Pacific Region — 12 min ago — Suspicious naval activity detected (High)</li>
-            <li>Cyber Sector — 27 min ago — Increased intrusion (High)</li>
-            <li>East Border — 52 min ago — Unidentified aircraft (High)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Threat Activity Graph -->
-      <div class="bg-[#171717] p-4 rounded-lg">
-        <h3 class="font-semibold mb-2">Threat Activity (last 24hrs)</h3>
-
-        <div class="h-40">
-          <canvas
-            baseChart
-            [data]="threatActivityData"
-            [options]="threatActivityOptions"
-            [type]="'line'"
-          ></canvas>
-        </div>
-      </div>
-    </main>
+    <div class="bg-[#171717] p-4 rounded-lg">
+      <h3 class="font-semibold mb-2">Intelligence Briefings</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>Pacific Region — 12 min ago — Suspicious naval activity detected (High)</li>
+        <li>Cyber Sector — 27 min ago — Increased intrusion (High)</li>
+        <li>East Border — 52 min ago — Unidentified aircraft (High)</li>
+      </ul>
+    </div>
   </div>
-</div>
+
+  <!-- Threat Activity Graph -->
+  <div class="bg-[#171717] p-4 rounded-lg">
+    <h3 class="font-semibold mb-2">Threat Activity (last 24hrs)</h3>
+
+    <div class="h-40">
+      <canvas
+        baseChart
+        [data]="threatActivityData"
+        [options]="threatActivityOptions"
+        [type]="'line'"
+      ></canvas>
+    </div>
+  </div>
+</main>
