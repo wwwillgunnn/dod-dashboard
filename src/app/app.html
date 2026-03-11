@@ -68,11 +68,16 @@
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="bg-[#171717] p-4 rounded-lg">
           <h3 class="font-semibold mb-2">Threat Incidents</h3>
-          <div class="h-32 bg-gray-700 rounded-lg flex items-end justify-between p-2">
-            <div class="w-1/4 h-3/4 bg-green-500"></div>
-            <div class="w-1/4 h-1/2 bg-green-500"></div>
-            <div class="w-1/4 h-full bg-green-500"></div>
+
+          <div class="h-32">
+            <canvas
+              baseChart
+              [data]="barChartData"
+              [options]="barChartOptions"
+              [type]="'bar'"
+            ></canvas>
           </div>
+
           <p class="text-xs mt-2 text-gray-400">
             Total threat levels this month: Trending down by 5.2%
           </p>
@@ -100,11 +105,14 @@
       <!-- Threat Activity Graph -->
       <div class="bg-[#171717] p-4 rounded-lg">
         <h3 class="font-semibold mb-2">Threat Activity (last 24hrs)</h3>
-        <div class="h-40 bg-gray-700 rounded-lg flex items-end p-2">
-          <div class="w-1/6 h-1/4 bg-green-500"></div>
-          <div class="w-1/6 h-1/2 bg-green-500"></div>
-          <div class="w-1/6 h-3/4 bg-green-500"></div>
-          <div class="w-1/6 h-full bg-green-500"></div>
+
+        <div class="h-40">
+          <canvas
+            baseChart
+            [data]="threatActivityData"
+            [options]="threatActivityOptions"
+            [type]="'line'"
+          ></canvas>
         </div>
       </div>
     </main>
@@ -116,7 +124,7 @@
   >
     <!-- Alerts Section -->
     <h3 class="font-semibold mb-2">Alerts</h3>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 max-h-96 overflow-y-auto pr-1">
       <!-- Critical Alert -->
       <div class="flex items-center gap-2 bg-red-900/50 p-3 rounded-lg shadow">
         <span class="material-icons text-red-500">dangerous</span>
@@ -133,6 +141,18 @@
       <div class="flex items-center gap-2 bg-red-900/50 p-3 rounded-lg shadow">
         <span class="material-icons text-red-500">dangerous</span>
         <p class="text-sm text-red-100">CRITICAL: Radar anomaly detected — 10min ago</p>
+      </div>
+
+      <!-- High Alert -->
+      <div class="flex items-center gap-2 bg-orange-900/50 p-3 rounded-lg shadow">
+        <span class="material-icons text-orange-400">warning</span>
+        <p class="text-sm text-orange-100">HIGH: Unauthorized drones — 15min ago</p>
+      </div>
+
+      <!-- High Alert -->
+      <div class="flex items-center gap-2 bg-orange-900/50 p-3 rounded-lg shadow">
+        <span class="material-icons text-orange-400">warning</span>
+        <p class="text-sm text-orange-100">HIGH: Unauthorized drones — 15min ago</p>
       </div>
     </div>
 
