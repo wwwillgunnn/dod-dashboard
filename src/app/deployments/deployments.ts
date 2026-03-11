@@ -1,17 +1,24 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
-import Globe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-deployments',
   standalone: true,
-  templateUrl: './deployments.html', // or you can use inline template
+  templateUrl: './deployments.html',
   styleUrls: ['./deployments.css'],
 })
 export class Deployments implements AfterViewInit {
   @ViewChild('globeContainer', { static: true })
   globeContainer!: ElementRef<HTMLDivElement>;
+
+  is3D = true;
+
+  globeRenderer: THREE.WebGLRenderer | null = null;
+  globeCamera: THREE.PerspectiveCamera | null = null;
+  globeControls: OrbitControls | null = null;
+  globeScene: THREE.Scene | null = null;
+  globeObject: any = null;
 
   locationsArray = [
     { lat: -33.8688, lng: 151.2093 },
@@ -21,10 +28,35 @@ export class Deployments implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    if (typeof window === 'undefined') return; // skip SSR
+    if (typeof window !== 'undefined') {
+      this.renderGlobeOrMap();
+    }
+  }
 
-    import('three-globe').then(({ default: Globe }) => {
-      const container = this.globeContainer.nativeElement;
+  async toggleView(is3D: boolean) {
+    this.is3D = is3D;
+    if (typeof window !== 'undefined') {
+      this.renderGlobeOrMap();
+    }
+  }
+
+  async renderGlobeOrMap() {
+    const container = this.globeContainer.nativeElement;
+    container.innerHTML = ''; // clear previous globe/map
+
+    // Cleanup previous Three.js globe
+    if (this.globeRenderer) {
+      this.globeRenderer.dispose();
+      this.globeRenderer = null;
+      this.globeScene = null;
+      this.globeCamera = null;
+      this.globeControls = null;
+      this.globeObject = null;
+    }
+
+    if (this.is3D) {
+      // --- 3D Globe (Three-Globe) ---
+      const Globe = (await import('three-globe')).default;
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -63,8 +95,21 @@ export class Deployments implements AfterViewInit {
         controls.update();
         renderer.render(scene, camera);
       };
-
       animate();
-    });
+
+      this.globeScene = scene;
+      this.globeRenderer = renderer;
+      this.globeCamera = camera;
+      this.globeControls = controls;
+      this.globeObject = globe;
+    } else {
+      // --- 2D Map as iframe ---
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.openstreetmap.org/export/embed.html'; // example interactive map
+      iframe.width = '100%';
+      iframe.height = '100%';
+      iframe.style.border = '0';
+      container.appendChild(iframe);
+    }
   }
 }

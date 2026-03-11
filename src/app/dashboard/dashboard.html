@@ -3,23 +3,23 @@
   <div class="grid grid-cols-4 gap-4 mb-6">
     <div class="bg-[#171717] p-4 rounded-lg">
       <h3 class="text-sm text-gray-400">Deployed Units</h3>
-      <p class="text-2xl font-bold">200,000</p>
-      <p class="text-xs text-gray-500 mt-1">Trending Downwards — Oh no!</p>
+      <p class="text-3xl font-bold">200,000</p>
+      <p class="text-xs text-gray-500 mt-10">Trending Downwards — Oh no!</p>
     </div>
     <div class="bg-[#171717] p-4 rounded-lg">
       <h3 class="text-sm text-gray-400">Active Operations</h3>
-      <p class="text-2xl font-bold">22,654</p>
-      <p class="text-xs text-gray-500 mt-1">Trending Downwards (+3 started in the last hour)</p>
+      <p class="text-3xl font-bold">22,654</p>
+      <p class="text-xs text-gray-500 mt-10">Trending Downwards (+3 started in the last hour)</p>
     </div>
     <div class="bg-[#171717] p-4 rounded-lg">
       <h3 class="text-sm text-gray-400">Satellite Status</h3>
-      <p class="text-2xl font-bold">98%</p>
-      <p class="text-xs text-gray-500 mt-1">Looking goooood — Take action or get cooked twinski</p>
+      <p class="text-3xl font-bold">98%</p>
+      <p class="text-xs text-gray-500 mt-10">Looking goooood — Take action or get cooked twinski</p>
     </div>
     <div class="bg-[#171717] p-4 rounded-lg">
       <h3 class="text-sm text-gray-400">Operational Assets</h3>
-      <p class="text-2xl font-bold">7,265</p>
-      <p class="text-xs text-gray-500 mt-1">
+      <p class="text-3xl font-bold">7,265</p>
+      <p class="text-xs text-gray-500 mt-10">
         Trending Upwards — Includes ground, air, and water machines
       </p>
     </div>
@@ -28,7 +28,7 @@
   <!-- Charts & Tables -->
   <div class="grid grid-cols-3 gap-4 mb-6">
     <div class="bg-[#171717] p-4 rounded-lg">
-      <h3 class="font-semibold mb-2">Threat Incidents</h3>
+      <h3 class="font-semibold mb-20">Threat Incidents</h3>
 
       <div class="h-32">
         <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"></canvas>
@@ -38,23 +38,71 @@
         Total threat levels this month: Trending down by 5.2%
       </p>
     </div>
-
-    <div class="bg-[#171717] p-4 rounded-lg">
-      <h3 class="font-semibold mb-2">Active Operations</h3>
-      <ul class="space-y-2 text-sm text-gray-300">
-        <li>Operation BLEH — Region: Pacific</li>
-        <li>Operation BLEH — Region: Pacific</li>
-        <li>Operation BLEH — Region: Pacific</li>
-      </ul>
+    <!-- Active Operations -->
+    <div class="bg-[#171717] p-4 rounded-lg flex-1 max-h-[300px]">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold text-white">Active Operations</h3>
+        <span class="text-gray-400 text-sm cursor-pointer">View all</span>
+      </div>
+      <p class="text-gray-400 text-xs mb-2">Threats in the last 24hrs</p>
+      <div class="overflow-y-auto max-h-[220px] space-y-2">
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>Operation BLEH</p>
+            <p class="text-gray-400 text-xs">Region: Pacific</p>
+          </div>
+        </div>
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>Operation BLEH</p>
+            <p class="text-gray-400 text-xs">Region: Pacific</p>
+          </div>
+        </div>
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>Operation BLEH</p>
+            <p class="text-gray-400 text-xs">Region: Pacific</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="bg-[#171717] p-4 rounded-lg">
-      <h3 class="font-semibold mb-2">Intelligence Briefings</h3>
-      <ul class="space-y-2 text-sm text-gray-300">
-        <li>Pacific Region — 12 min ago — Suspicious naval activity detected (High)</li>
-        <li>Cyber Sector — 27 min ago — Increased intrusion (High)</li>
-        <li>East Border — 52 min ago — Unidentified aircraft (High)</li>
-      </ul>
+    <!-- Intelligence Briefings -->
+    <div class="bg-[#171717] p-4 rounded-lg flex-1 max-h-[300px]">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-semibold text-white">Intelligence Briefings</h3>
+        <span class="text-gray-400 text-sm cursor-pointer">View all</span>
+      </div>
+      <p class="text-gray-400 text-xs mb-2">Threats in the last 24hrs</p>
+      <div class="overflow-y-auto max-h-[220px] space-y-2">
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>Pacific Region • 12 min ago</p>
+            <p class="text-gray-400 text-xs">Suspicious naval activity detected</p>
+            <p class="text-gray-400 text-xs">Severity: High</p>
+          </div>
+        </div>
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>Cyber Sector • 27 min ago</p>
+            <p class="text-gray-400 text-xs">Increased intrusion</p>
+            <p class="text-gray-400 text-xs">Severity: High</p>
+          </div>
+        </div>
+        <div class="bg-[#1f1f1f] p-3 rounded-lg flex items-center gap-3">
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+          <div class="text-white text-sm">
+            <p>East Border • 52 min ago</p>
+            <p class="text-gray-400 text-xs">Unidentified aircraft</p>
+            <p class="text-gray-400 text-xs">Severity: High</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

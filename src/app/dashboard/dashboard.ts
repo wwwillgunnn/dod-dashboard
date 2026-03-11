@@ -18,7 +18,7 @@ export class Dashboard {
         data: [30, 18, 42],
         backgroundColor: '#22c55e',
         borderRadius: 4,
-        barThickness: 40,
+        barThickness: 60,
       },
     ],
   };
