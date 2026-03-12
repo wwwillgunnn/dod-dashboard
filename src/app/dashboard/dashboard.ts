@@ -11,11 +11,12 @@ Chart.register(...registerables);
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
+  // Bar chart
   barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: ['A', 'B', 'C'],
+    labels: ['Medium', 'High', 'Critical'],
     datasets: [
       {
-        data: [30, 18, 42],
+        data: [60, 32, 84],
         backgroundColor: '#22c55e',
         borderRadius: 4,
         barThickness: 60,
@@ -30,20 +31,20 @@ export class Dashboard {
       legend: { display: false },
     },
     scales: {
-      x: { display: false },
-      y: { display: false },
+      x: { display: true },
+      y: { display: true },
     },
   };
 
-  // Line chart for Threat Activity (last 24hrs)
+  // Line chart
   threatActivityData: ChartConfiguration<'line'>['data'] = {
     labels: ['0-4h', '4-8h', '8-12h', '12-16h', '16-20h', '20-24h'],
     datasets: [
       {
-        label: 'Threat Level',
+        label: 'Threat number',
         data: [25, 50, 75, 100, 60, 40],
-        borderColor: '#22c55e', // green line
-        backgroundColor: 'rgba(34, 197, 94, 0.2)', // green fill under line
+        borderColor: '#22c55e',
+        backgroundColor: 'rgba(34, 197, 94, 0.2)',
         fill: true,
         tension: 0.4, // smooth curve
         pointRadius: 4,
@@ -59,8 +60,8 @@ export class Dashboard {
       legend: { display: false },
     },
     scales: {
-      x: { display: false }, // hide x-axis
-      y: { display: false }, // hide y-axis
+      x: { display: true },
+      y: { display: true },
     },
   };
 }

@@ -20,6 +20,7 @@ export class Deployments implements AfterViewInit {
   globeScene: THREE.Scene | null = null;
   globeObject: any = null;
 
+  // for points on the globe
   locationsArray = [
     { lat: -33.8688, lng: 151.2093 },
     { lat: 40.7128, lng: -74.006 },
@@ -76,7 +77,8 @@ export class Deployments implements AfterViewInit {
       scene.add(directionalLight);
 
       const globe = new Globe()
-        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+        .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
         .pointsData(this.locationsArray)
         .pointAltitude(0.01)
         .pointColor(() => '#ffffff')
@@ -105,7 +107,7 @@ export class Deployments implements AfterViewInit {
     } else {
       // --- 2D Map as iframe ---
       const iframe = document.createElement('iframe');
-      iframe.src = 'https://www.openstreetmap.org/export/embed.html'; // example interactive map
+      iframe.src = 'https://www.openstreetmap.org/export/embed.html'; // TODO: add the one from kurtis
       iframe.width = '100%';
       iframe.height = '100%';
       iframe.style.border = '0';
