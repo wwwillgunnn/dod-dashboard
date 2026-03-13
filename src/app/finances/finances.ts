@@ -47,7 +47,7 @@ export class Finances {
     labels: ['Personnel', 'Equipment', 'Operations', 'R&D'],
     datasets: [
       {
-        data: [35, 30, 20, 15],
+        data: [15, 20, 10, 25],
         backgroundColor: [
           '#22c55e', // green
           '#3b82f6', // blue
